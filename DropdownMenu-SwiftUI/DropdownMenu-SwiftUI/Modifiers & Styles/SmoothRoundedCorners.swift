@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Clips the view to its bounding frame with specified corner radius and curve style.
+/// Clips the view to its bounding frame with the specified corner radius and curve style.
 struct CornerRadius: ViewModifier {
     let cornerRadius: CGFloat
     let style: RoundedCornerStyle
@@ -23,12 +23,12 @@ struct CornerRadius: ViewModifier {
 }
 
 extension View {
-    /// Clips the view to its bounding frame with specified corner radius. Uses the `continuous` style.
+    /// Clips the view to its bounding frame with the specified corner radius. Uses the `continuous` style.
     func smoothRoundedCorners(_ cornerRadius: CGFloat = 10.0) -> some View {
         modifier(CornerRadius(cornerRadius, style: .continuous))
     }
     
-    /// Clips the view to its bounding frame with specified corner radius. Uses the `circular` (default) style.
+    /// Clips the view to its bounding frame with the specified corner radius. Uses the `circular` (default) style.
     func roundedCorners(_ cornerRadius: CGFloat = 10.0) -> some View {
         modifier(CornerRadius(cornerRadius, style: .circular))
     }
