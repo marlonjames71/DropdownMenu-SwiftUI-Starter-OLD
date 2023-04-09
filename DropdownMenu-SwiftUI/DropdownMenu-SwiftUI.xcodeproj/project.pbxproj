@@ -19,6 +19,9 @@
 		379E627229E20A3100F99FFA /* View+ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E627129E20A3100F99FFA /* View+ScrollView.swift */; };
 		37E3F31329E269860015D823 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31229E269860015D823 /* MenuItem.swift */; };
 		37E3F31629E26BDB0015D823 /* DropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31529E26BDB0015D823 /* DropdownMenu.swift */; };
+		37E3F31829E271C10015D823 /* MenuItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31729E271C10015D823 /* MenuItemRow.swift */; };
+		37E3F31B29E273F40015D823 /* MenuItemRowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31A29E273F40015D823 /* MenuItemRowButtonStyle.swift */; };
+		37E3F31D29E2742A0015D823 /* SelectionHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31C29E2742A0015D823 /* SelectionHighlight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		379E627129E20A3100F99FFA /* View+ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScrollView.swift"; sourceTree = "<group>"; };
 		37E3F31229E269860015D823 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		37E3F31529E26BDB0015D823 /* DropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
+		37E3F31729E271C10015D823 /* MenuItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemRow.swift; sourceTree = "<group>"; };
+		37E3F31A29E273F40015D823 /* MenuItemRowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemRowButtonStyle.swift; sourceTree = "<group>"; };
+		37E3F31C29E2742A0015D823 /* SelectionHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionHighlight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				379E626C29E2099100F99FFA /* SmoothRoundedCorners.swift */,
+				37E3F31A29E273F40015D823 /* MenuItemRowButtonStyle.swift */,
 			);
 			path = "Modifiers & Styles";
 			sourceTree = "<group>";
@@ -170,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				37E3F31529E26BDB0015D823 /* DropdownMenu.swift */,
+				37E3F31729E271C10015D823 /* MenuItemRow.swift */,
+				37E3F31C29E2742A0015D823 /* SelectionHighlight.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,13 +313,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E3F31829E271C10015D823 /* MenuItemRow.swift in Sources */,
 				379E626D29E2099100F99FFA /* SmoothRoundedCorners.swift in Sources */,
 				379E627029E20A1100F99FFA /* Color+.swift in Sources */,
 				379E624429E2083100F99FFA /* ContentView.swift in Sources */,
 				37E3F31329E269860015D823 /* MenuItem.swift in Sources */,
 				379E624229E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift in Sources */,
+				37E3F31B29E273F40015D823 /* MenuItemRowButtonStyle.swift in Sources */,
 				379E627229E20A3100F99FFA /* View+ScrollView.swift in Sources */,
 				37E3F31629E26BDB0015D823 /* DropdownMenu.swift in Sources */,
+				37E3F31D29E2742A0015D823 /* SelectionHighlight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

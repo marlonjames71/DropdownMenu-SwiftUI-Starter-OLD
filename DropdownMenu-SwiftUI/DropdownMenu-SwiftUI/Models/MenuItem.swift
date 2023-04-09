@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MenuItem: Identifiable {
+struct MenuItem: Identifiable, Equatable {
     let id: UUID
     let title: String
     let iconName: String?
@@ -27,10 +27,12 @@ struct MenuItem: Identifiable {
 extension MenuItem {
     static var mockMenuItems: [Self] {
         [
-            .init(title: "What is your favorite place to travel to?", iconName: "airplane"),
+            mockMenuItem,
             .init(title: "What street did you grow up on?", iconName: "house"),
             .init(title: "What is your favorite book?", iconName: "book")
         ]
     }
+    
+    static let mockMenuItem: Self = .init(title: "What is your favorite place to travel to?", iconName: "airplane")
 }
 #endif

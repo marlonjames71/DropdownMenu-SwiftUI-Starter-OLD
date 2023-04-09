@@ -10,29 +10,44 @@ import SwiftUI
 struct DropdownMenu: View {
     let menuItems: [MenuItem]
     
+    @State private var selectedItem: MenuItem?
     @State private var expanded = false
     
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Choose an option")
+                if let selectedItem {
+                    Text(selectedItem.title)
+                } else {
+                    Text("Choose an option")
+                }
                 Spacer()
                 Image(systemName: "chevron.down")
                     .rotationEffect(.degrees(expanded ? -180 : 0))
             }
+            .padding(.vertical)
+            .padding(.horizontal, 16)
             .contentShape(Rectangle())
             .onTapGesture {
-                withAnimation { expanded.toggle() }
+                withAnimation(.spring()) { expanded.toggle() }
             }
             
             if expanded {
-                ForEach(menuItems) { item in
-                    Text(item.title)
+                VStack(spacing: 3) {
+                    ForEach(menuItems) { item in
+                        MenuItemRow(item: item, selectedItem: $selectedItem)
+                    }
+                    .border(.orange)
                 }
+                .padding(.vertical, 6)
+                .border(.red)
             }
         }
-        .padding()
-        .border(.blue)
+        .onChange(of: selectedItem) { newValue in
+            withAnimation {
+                expanded.toggle()
+            }
+        }
     }
 }
 

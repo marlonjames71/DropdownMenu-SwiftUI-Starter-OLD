@@ -11,6 +11,7 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
             DropdownMenu(menuItems: MenuItem.mockMenuItems)
+                .border(.blue)
             
             Spacer()
         }
