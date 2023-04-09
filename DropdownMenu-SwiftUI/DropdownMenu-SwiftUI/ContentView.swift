@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack(alignment: .leading) {
+            ForEach(MenuItem.mockMenuItems) { item in
+                if let iconName = item.iconName {
+                    Label(item.title, systemImage: iconName)
+                } else {
+                    Text(item.title)
+                }
+            }
+            
+            Spacer()
         }
         .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color.bgPrimary.ignoresSafeArea())
     }
 }
 

@@ -17,6 +17,7 @@
 		379E626D29E2099100F99FFA /* SmoothRoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E626C29E2099100F99FFA /* SmoothRoundedCorners.swift */; };
 		379E627029E20A1100F99FFA /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E626F29E20A1100F99FFA /* Color+.swift */; };
 		379E627229E20A3100F99FFA /* View+ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E627129E20A3100F99FFA /* View+ScrollView.swift */; };
+		37E3F31329E269860015D823 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31229E269860015D823 /* MenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		379E626C29E2099100F99FFA /* SmoothRoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothRoundedCorners.swift; sourceTree = "<group>"; };
 		379E626F29E20A1100F99FFA /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		379E627129E20A3100F99FFA /* View+ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScrollView.swift"; sourceTree = "<group>"; };
+		37E3F31229E269860015D823 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		379E624029E2083100F99FFA /* DropdownMenu-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				37E3F31129E269760015D823 /* Models */,
 				379E624129E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift */,
 				379E624329E2083100F99FFA /* ContentView.swift */,
 				379E624529E2083200F99FFA /* Assets.xcassets */,
@@ -150,6 +153,14 @@
 				379E627129E20A3100F99FFA /* View+ScrollView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		37E3F31129E269760015D823 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37E3F31229E269860015D823 /* MenuItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +296,7 @@
 				379E626D29E2099100F99FFA /* SmoothRoundedCorners.swift in Sources */,
 				379E627029E20A1100F99FFA /* Color+.swift in Sources */,
 				379E624429E2083100F99FFA /* ContentView.swift in Sources */,
+				37E3F31329E269860015D823 /* MenuItem.swift in Sources */,
 				379E624229E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift in Sources */,
 				379E627229E20A3100F99FFA /* View+ScrollView.swift in Sources */,
 			);
