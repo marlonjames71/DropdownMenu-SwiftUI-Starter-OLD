@@ -8,31 +8,31 @@
 import Foundation
 
 struct MenuItem: Identifiable, Equatable {
-    let id: UUID
-    let title: String
-    let iconName: String?
-    
-    init(
-        id: UUID = UUID(),
-        title: String,
-        iconName: String? = nil
-    ) {
-        self.id = id
-        self.title = title
-        self.iconName = iconName
-    }
+	let id: UUID
+	let title: String
+	let iconName: String?
+	
+	init(
+		id: UUID = UUID(),
+		title: String,
+		iconName: String? = nil
+	) {
+		self.id = id
+		self.title = title
+		self.iconName = iconName
+	}
 }
 
 #if DEBUG
 extension MenuItem {
-    static var mockMenuItems: [Self] {
-        [
-            mockMenuItem,
-            .init(title: "What street did you grow up on?", iconName: "house"),
-            .init(title: "What is your favorite book?", iconName: "book")
-        ]
-    }
-    
-    static let mockMenuItem: Self = .init(title: "What is your favorite place to travel to?", iconName: "airplane")
+	static var mockMenuItems: [Self] {
+		[
+			mockMenuItem,
+			.init(title: "What street did you grow up on?", iconName: "house"),
+			.init(title: "What is your favorite book?", iconName: "book")
+		]
+	}
+	
+	static let mockMenuItem: Self = .init(title: "What is your favorite place to travel to?", iconName: "airplane")
 }
 #endif

@@ -8,11 +8,11 @@
 import SwiftUI
 
 extension Animation {
-    static func DDMSpring() -> Animation {
-        spring(
-            response: 0.47,
-            dampingFraction: 0.83,
-            blendDuration: 0
-        )
-    }
+	static func DDMSpring() -> Animation {
+		spring(
+			response: 0.47,
+			dampingFraction: 0.83,
+			blendDuration: 0
+		)
+	}
 }
