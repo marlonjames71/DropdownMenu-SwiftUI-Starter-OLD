@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct SelectionHighlight: View {
     enum Style: CGFloat {
         case pressed = 0.15

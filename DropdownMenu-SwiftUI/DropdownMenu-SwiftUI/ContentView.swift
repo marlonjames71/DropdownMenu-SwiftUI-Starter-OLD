@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var option1: MenuItem?
+    
     var body: some View {
         VStack(alignment: .leading) {
-            DropdownMenu(menuItems: MenuItem.mockMenuItems)
-                .border(.blue)
+            DropdownMenu(
+                title: "Security Question 1",
+                placeholder: "Choose a security question",
+                menuItems: MenuItem.mockMenuItems,
+                selectedItem: $option1,
+                provideResetButton: true
+            )
             
             Spacer()
         }

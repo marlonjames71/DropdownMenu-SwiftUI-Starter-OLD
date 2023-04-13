@@ -22,6 +22,9 @@
 		37E3F31829E271C10015D823 /* MenuItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31729E271C10015D823 /* MenuItemRow.swift */; };
 		37E3F31B29E273F40015D823 /* MenuItemRowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31A29E273F40015D823 /* MenuItemRowButtonStyle.swift */; };
 		37E3F31D29E2742A0015D823 /* SelectionHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31C29E2742A0015D823 /* SelectionHighlight.swift */; };
+		37E3F31F29E3C1DF0015D823 /* SelectedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F31E29E3C1DF0015D823 /* SelectedItemView.swift */; };
+		37E3F32129E50F950015D823 /* Animation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F32029E50F950015D823 /* Animation+.swift */; };
+		37E3F32329E530BC0015D823 /* MenuTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3F32229E530BC0015D823 /* MenuTitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +47,7 @@
 /* Begin PBXFileReference section */
 		379E623E29E2083100F99FFA /* DropdownMenu-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DropdownMenu-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		379E624129E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenu_SwiftUIApp.swift; sourceTree = "<group>"; };
-		379E624329E2083100F99FFA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		379E624329E2083100F99FFA /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 3; };
 		379E624529E2083200F99FFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		379E624829E2083200F99FFA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		379E624E29E2083200F99FFA /* DropdownMenu-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DropdownMenu-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +63,9 @@
 		37E3F31729E271C10015D823 /* MenuItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemRow.swift; sourceTree = "<group>"; };
 		37E3F31A29E273F40015D823 /* MenuItemRowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemRowButtonStyle.swift; sourceTree = "<group>"; };
 		37E3F31C29E2742A0015D823 /* SelectionHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionHighlight.swift; sourceTree = "<group>"; };
+		37E3F31E29E3C1DF0015D823 /* SelectedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemView.swift; sourceTree = "<group>"; };
+		37E3F32029E50F950015D823 /* Animation+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+.swift"; sourceTree = "<group>"; };
+		37E3F32229E530BC0015D823 /* MenuTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,11 +116,11 @@
 		379E624029E2083100F99FFA /* DropdownMenu-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				379E624329E2083100F99FFA /* ContentView.swift */,
+				379E624129E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift */,
+				379E624529E2083200F99FFA /* Assets.xcassets */,
 				37E3F31429E26BCD0015D823 /* Views */,
 				37E3F31129E269760015D823 /* Models */,
-				379E624129E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift */,
-				379E624329E2083100F99FFA /* ContentView.swift */,
-				379E624529E2083200F99FFA /* Assets.xcassets */,
 				379E626E29E209FB00F99FFA /* Extensions */,
 				379E626B29E2097400F99FFA /* Modifiers & Styles */,
 				379E624729E2083200F99FFA /* Preview Content */,
@@ -161,6 +167,7 @@
 			children = (
 				379E626F29E20A1100F99FFA /* Color+.swift */,
 				379E627129E20A3100F99FFA /* View+ScrollView.swift */,
+				37E3F32029E50F950015D823 /* Animation+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -179,6 +186,8 @@
 				37E3F31529E26BDB0015D823 /* DropdownMenu.swift */,
 				37E3F31729E271C10015D823 /* MenuItemRow.swift */,
 				37E3F31C29E2742A0015D823 /* SelectionHighlight.swift */,
+				37E3F31E29E3C1DF0015D823 /* SelectedItemView.swift */,
+				37E3F32229E530BC0015D823 /* MenuTitleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,14 +322,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E3F31F29E3C1DF0015D823 /* SelectedItemView.swift in Sources */,
 				37E3F31829E271C10015D823 /* MenuItemRow.swift in Sources */,
 				379E626D29E2099100F99FFA /* SmoothRoundedCorners.swift in Sources */,
 				379E627029E20A1100F99FFA /* Color+.swift in Sources */,
 				379E624429E2083100F99FFA /* ContentView.swift in Sources */,
 				37E3F31329E269860015D823 /* MenuItem.swift in Sources */,
+				37E3F32129E50F950015D823 /* Animation+.swift in Sources */,
 				379E624229E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift in Sources */,
 				37E3F31B29E273F40015D823 /* MenuItemRowButtonStyle.swift in Sources */,
 				379E627229E20A3100F99FFA /* View+ScrollView.swift in Sources */,
+				37E3F32329E530BC0015D823 /* MenuTitleView.swift in Sources */,
 				37E3F31629E26BDB0015D823 /* DropdownMenu.swift in Sources */,
 				37E3F31D29E2742A0015D823 /* SelectionHighlight.swift in Sources */,
 			);
