@@ -158,3 +158,19 @@ struct DropdownMenu_Previews: PreviewProvider {
 		.padding(.horizontal, 16)
 	}
 }
+
+// MARK: - Library -
+
+struct DropdownMenuLibraryContent: LibraryContentProvider {
+	@LibraryContentBuilder
+	public var views: [LibraryItem] {
+		LibraryItem(
+			DropdownMenu(
+				menuItems: MenuItem.mockMenuItems,
+				selectedItem: .constant(nil)
+			),
+			title: "Dropdown Menu",
+			category: .control
+		)
+	}
+}
