@@ -8,34 +8,86 @@
 import SwiftUI
 
 struct DropdownMenu: View {
+	
 	let title: String?
 	let placeholder: String?
 	let menuItems: [MenuItem]
 	@Binding var selectedItem: MenuItem?
-	let provideResetButton: Bool
+	
+	let showClearButton: Bool
+	let scrollToTopOnClear: Bool
+	let excludedItems: [MenuItem]
 	
 	@State private var expanded = false
 	
+	// MARK: - Init
+	
+	/// Creates a dropdown menu with menu items and configurations
+	/// - Parameters:
+	///   - title: A title that sits above the dropdown menu.
+	///   - placeholder: Text that is displayed before a menu item is selected.
+	///   - menuItems: The items that are displayed when the dropdown menu is expanded for the user to choose from.
+	///   - selectedItem: A binding to the item the user has selected.
+	///   - showClearButton: A boolean value indicating whether or not to display a button that clears the current selection.
+	///   The default value is `true`.
+	///   - scrollToTopOnClear: After the selected item has been removed, the menu item list will be scrolled to the top automatically.
+	///   The default value is `true`.
+	///   - excludedItems: Any menu item listed as an excluded item will not be visible in the list of items. For example, a selected item
+	///   from another dropdown menu can be added as an excluded item if both menus share the same menu items preventing the user from
+	///   selecting the same menu item.
 	init(
-		title: String?,
-		placeholder: String?,
+		title: String? = nil,
+		placeholder: String? = nil,
 		menuItems: [MenuItem],
 		selectedItem: Binding<MenuItem?>,
-		provideResetButton: Bool
+		showClearButton: Bool = true,
+		scrollToTopOnClear: Bool = true,
+		excludedItems: MenuItem?...
 	) {
 		self.title = title
 		self.placeholder = placeholder
 		self.menuItems = menuItems
 		self._selectedItem = selectedItem
-		self.provideResetButton = provideResetButton
+		self.showClearButton = showClearButton
+		self.scrollToTopOnClear = scrollToTopOnClear
+		self.excludedItems = excludedItems.compactMap { $0 }
 	}
+	
+	/// Creates a dropdown menu with menu items and configurations
+	/// - Parameters:
+	///   - title: A title that sits above the dropdown menu.
+	///   - placeholder: Text that is displayed before a menu item is selected.
+	///   - menuItems: The items that are displayed when the dropdown menu is expanded for the user to choose from.
+	///   - selectedItem: A binding to the item the user has selected.
+	///   - showClearButton: A boolean value indicating whether or not to display a button that clears the current selection.
+	///   The default value is `true`.
+	///   - scrollToTopOnClear: After the selected item has been removed, the menu item list will be scrolled to the top automatically.
+	///   The default value is `true`.
+	init(
+		title: String? = nil,
+		placeholder: String? = nil,
+		menuItems: [MenuItem],
+		selectedItem: Binding<MenuItem?>,
+		showClearButton: Bool = true,
+		scrollToTopOnClear: Bool = true
+	) {
+		self.title = title
+		self.placeholder = placeholder
+		self.menuItems = menuItems
+		self._selectedItem = selectedItem
+		self.showClearButton = showClearButton
+		self.scrollToTopOnClear = scrollToTopOnClear
+		self.excludedItems = []
+	}
+	
+	// MARK: - Body
 	
 	var body: some View {
 		VStack(spacing: 8) {
 			MenuTitleView(
 				title: title,
 				selectedItem: $selectedItem,
-				provideResetButton: provideResetButton
+				showClearButton: showClearButton
 			)
 			
 			VStack(spacing: 0) {
@@ -46,12 +98,15 @@ struct DropdownMenu: View {
 				)
 				
 				if expanded {
-					VStack(spacing: 3) {
-						ForEach(menuItems) { item in
-							MenuItemRow(item: item, selectedItem: $selectedItem)
-						}
-					}
-					.padding(.vertical, 6)
+					Divider().transition(.scale(scale: 0.8).combined(with: .opacity))
+					
+					MenuItemsList(
+						menuItems: getValidMenuItems(),
+						selectedItem: $selectedItem,
+						excludedItems: excludedItems,
+						expanded: expanded,
+						scrollToTopOnClear: scrollToTopOnClear
+					)
 				}
 			}
 			.ignoresSafeArea(.keyboard, edges: .all)
@@ -60,11 +115,23 @@ struct DropdownMenu: View {
 			.shadow(color: Color.black.opacity(0.10), radius: 4, x: 0.0, y: 2.0)
 		}
 		.onChange(of: selectedItem) { _ in
-			guard expanded else { return }
+			guard selectedItem != nil else { return }
 			Self.toggle($expanded)
 		}
 	}
+	
+	// MARK: - Helper Methods
+	
+	private func getValidMenuItems() -> [MenuItem] {
+		 if excludedItems.isEmpty {
+			  return menuItems
+		 } else {
+			  return menuItems.filter { !excludedItems.contains($0) }
+		 }
+	}
 }
+
+// MARK: - Toggle -
 
 extension DropdownMenu {
 	static func toggle(_ state: Binding<Bool>) {
@@ -74,6 +141,8 @@ extension DropdownMenu {
 	}
 }
 
+// MARK: - Previews -
+
 struct DropdownMenu_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
@@ -82,7 +151,7 @@ struct DropdownMenu_Previews: PreviewProvider {
 				placeholder: "Choose a security question",
 				menuItems: MenuItem.mockMenuItems,
 				selectedItem: .constant(.mockMenuItem),
-				provideResetButton: false
+				showClearButton: false
 			)
 			Spacer()
 		}

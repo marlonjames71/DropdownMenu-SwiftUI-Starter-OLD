@@ -10,11 +10,11 @@ import SwiftUI
 extension View {
 	/// Embeds the view inside of a `ScrollView` based on a condition
 	@ViewBuilder func embedInScrollView(
-		_ shouldEmbed: Bool = true,
+		_ condition: Bool = true,
 		axis: Axis.Set = .vertical,
 		showsIndicators: Bool = true
 	) -> some View {
-		if shouldEmbed {
+		if condition {
 			ScrollView(axis, showsIndicators: showsIndicators) { self }
 		} else { self }
 	}

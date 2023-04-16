@@ -11,12 +11,12 @@ struct MenuTitleView: View {
 	
 	let title: String?
 	@Binding var selectedItem: MenuItem?
-	let provideResetButton: Bool
+	let showClearButton: Bool
 	
 	// MARK: - Body
 	
 	var body: some View {
-		if provideResetButton || title != nil {
+		if showClearButton || title != nil {
 			HStack {
 				if let title {
 					Text(title)
@@ -28,7 +28,7 @@ struct MenuTitleView: View {
 				
 				Spacer()
 				
-				if selectedItem != nil, provideResetButton {
+				if selectedItem != nil, showClearButton {
 					clearSelectionButton
 				}
 			}
@@ -61,7 +61,7 @@ struct MenuTitleView_Previews: PreviewProvider {
 		MenuTitleView(
 			title: nil,
 			selectedItem: .constant(.mockMenuItem),
-			provideResetButton: true
+			showClearButton: true
 		)
 	}
 }
