@@ -46,24 +46,27 @@ struct ContentView: View {
 						placeholder: "Choose an option below",
 						menuItems: hobbyCategories1,
 						selectedItem: $option1,
-						excludedItems: option2, option3, option1
+						excludedItems: option2, option3//, option1
 					)
+					.iconTint(.iconBlue)
 					
 					DropdownMenu(
 						title: "Favorite Hobby 2",
 						placeholder: "Choose an option below",
 						menuItems: hobbyCategories1,
 						selectedItem: $option2,
-						excludedItems: option1, option3, option2
+						excludedItems: option1, option3//, option2
 					)
+					.iconTint(.iconPink)
 					
 					DropdownMenu(
 						title: "Favorite Hobby 3",
 						placeholder: "Choose an option below",
 						menuItems: hobbyCategories1,
 						selectedItem: $option3,
-						excludedItems: option1, option2, option3
+						excludedItems: option1, option2//, option3
 					)
+					.iconTint(.iconGreen)
 					
 					Spacer()
 				}

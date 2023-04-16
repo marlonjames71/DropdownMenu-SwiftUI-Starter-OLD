@@ -13,6 +13,8 @@ struct SelectedItemView: View {
 	let placeholder: String?
 	let accentColor: Color
 	
+	@Environment(\.iconTint) var iconTint: Color
+	
 	// MARK: - Init
 	
 	init(
@@ -36,7 +38,7 @@ struct SelectedItemView: View {
 					Image(systemName: iconName)
 						.font(.body)
 						.frame(width: 30)
-						.foregroundColor(accentColor)
+						.foregroundColor(iconTint)
 						.aspectRatio(1.0, contentMode: .fit)
 						.fixedSize(horizontal: true, vertical: true)
 						.transition(.opacity)

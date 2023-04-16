@@ -11,6 +11,8 @@ struct MenuItemRow: View {
 	let item: MenuItem
 	@Binding var selectedItem: MenuItem?
 	
+	@Environment(\.iconTint) var iconTint: Color
+	
 	// MARK: - Body
 	
 	var body: some View {
@@ -39,13 +41,17 @@ struct MenuItemRow: View {
 	// MARK: - Helper Methods & Views
 	
 	private func foregroundColor(normalColor: Color = .primary) -> Color {
-		item == selectedItem ? .white : normalColor
+		if item == selectedItem {
+			return iconTint.isDark ? .white : .black
+		} else {
+			return normalColor
+		}
 	}
 	
 	@ViewBuilder
 	private var background: some View {
 		if item == selectedItem {
-			SelectionHighlight(color: .orange, style: .normal, padding: true)
+			SelectionHighlight(color: iconTint, style: .normal, padding: true)
 		}
 	}
 	
