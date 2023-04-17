@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37626DA229ECEB5F00D921A2 /* DisabledItemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37626DA129ECEB5F00D921A2 /* DisabledItemKey.swift */; };
 		379E624229E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E624129E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift */; };
 		379E624429E2083100F99FFA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E624329E2083100F99FFA /* ContentView.swift */; };
 		379E624629E2083200F99FFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379E624529E2083200F99FFA /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37626DA129ECEB5F00D921A2 /* DisabledItemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledItemKey.swift; sourceTree = "<group>"; };
 		379E623E29E2083100F99FFA /* DropdownMenu-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DropdownMenu-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		379E624129E2083100F99FFA /* DropdownMenu_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenu_SwiftUIApp.swift; sourceTree = "<group>"; };
 		379E624329E2083100F99FFA /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 3; };
@@ -163,6 +165,7 @@
 				379E626C29E2099100F99FFA /* SmoothRoundedCorners.swift */,
 				37E3F31A29E273F40015D823 /* MenuItemRowButtonStyle.swift */,
 				37D56FCE29EC820000D70001 /* IconTint.swift */,
+				37626DA129ECEB5F00D921A2 /* DisabledItemKey.swift */,
 			);
 			path = "Modifiers & Styles";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37626DA229ECEB5F00D921A2 /* DisabledItemKey.swift in Sources */,
 				37E3F31F29E3C1DF0015D823 /* SelectedItemView.swift in Sources */,
 				37D56FCF29EC820000D70001 /* IconTint.swift in Sources */,
 				37E3F31829E271C10015D823 /* MenuItemRow.swift in Sources */,

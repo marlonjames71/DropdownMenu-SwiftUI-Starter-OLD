@@ -20,6 +20,8 @@ struct DropdownMenu: View {
 	
 	@State private var expanded = false
 	
+	@Environment(\.showExcludedItemAsDisabled) var showExcluded
+	
 	// MARK: - Init
 	
 	/// Creates a dropdown menu with menu items and configurations
@@ -123,11 +125,13 @@ struct DropdownMenu: View {
 	// MARK: - Helper Methods
 	
 	private func getValidMenuItems() -> [MenuItem] {
-		 if excludedItems.isEmpty {
-			  return menuItems
-		 } else {
-			  return menuItems.filter { !excludedItems.contains($0) }
-		 }
+		guard !showExcluded else { return menuItems }
+		
+		if excludedItems.isEmpty {
+			return menuItems
+		} else {
+			return menuItems.filter { !excludedItems.contains($0) }
+		}
 	}
 }
 

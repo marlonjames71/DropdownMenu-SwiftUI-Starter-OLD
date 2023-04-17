@@ -75,32 +75,32 @@ struct ContentView: View {
 		NavigationView {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 24) {
-					DropdownMenu(
-						title: menuTitle.0,
-						placeholder: "Choose an option below",
-						menuItems: items,
-						selectedItem: $option1,
-						excludedItems: option2, option3//, option1
-					)
-					.iconTint(.iconBlue)
-					
-					DropdownMenu(
-						title: menuTitle.1,
-						placeholder: "Choose an option below",
-						menuItems: items,
-						selectedItem: $option2,
-						excludedItems: option1, option3//, option2
-					)
-					.iconTint(.iconPink)
-					
-					DropdownMenu(
-						title: menuTitle.2,
-						placeholder: "Choose an option below",
-						menuItems: items,
-						selectedItem: $option3,
-						excludedItems: option1, option2//, option3
-					)
-					.iconTint(.iconGreen)
+					Group {
+						DropdownMenu(
+							title: menuTitle.0,
+							placeholder: "Choose an option below",
+							menuItems: items,
+							selectedItem: $option1,
+							excludedItems: option2, option3, option1
+						)
+						
+						DropdownMenu(
+							title: menuTitle.1,
+							placeholder: "Choose an option below",
+							menuItems: items,
+							selectedItem: $option2,
+							excludedItems: option1, option3, option2
+						)
+						
+						DropdownMenu(
+							title: menuTitle.2,
+							placeholder: "Choose an option below",
+							menuItems: items,
+							selectedItem: $option3,
+							excludedItems: option1, option2, option3
+						)
+					}
+					.showExcludedItemsAsDisabled()
 					
 					Spacer()
 				}
@@ -109,7 +109,6 @@ struct ContentView: View {
 			}
 			.navigationTitle("Settings")
 			.background(Color.bgPrimary.ignoresSafeArea())
-			.scrollBounceBehavior(.basedOnSize)
 		}
 	}
 	

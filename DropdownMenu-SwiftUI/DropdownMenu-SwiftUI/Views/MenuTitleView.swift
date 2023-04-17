@@ -13,6 +13,8 @@ struct MenuTitleView: View {
 	@Binding var selectedItem: MenuItem?
 	let showClearButton: Bool
 	
+	let feedback = UIImpactFeedbackGenerator(style: .light)
+	
 	// MARK: - Body
 	
 	var body: some View {
@@ -50,6 +52,7 @@ struct MenuTitleView: View {
 	
 	private func clearSelection() {
 		guard selectedItem != nil else { return }
+		feedback.impactOccurred(intensity: 0.6)
 		withAnimation(.DDMSpring()) { selectedItem = nil }
 	}
 }

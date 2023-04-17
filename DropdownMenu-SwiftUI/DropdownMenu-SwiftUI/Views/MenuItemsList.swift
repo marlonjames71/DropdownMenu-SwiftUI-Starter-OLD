@@ -13,7 +13,9 @@ struct MenuItemsList: View {
 	@Binding var selectedItem: MenuItem?
 	let excludedItems: [MenuItem]
 	let expanded: Bool
-	let scrollToTopOnClear: Bool
+	let scrollToTopOnClear: Bool	
+	
+	@Environment(\.showExcludedItemAsDisabled) var showExcluded
 	
 	// MARK: - Body
 	
@@ -29,6 +31,8 @@ struct MenuItemsList: View {
 					ForEach(menuItems) { item in
 						MenuItemRow(item: item, selectedItem: $selectedItem)
 							.tag(item.id)
+							.opacity(opacity(item: item))
+							.disabled(shouldDisable(item: item))
 					}
 					.onAppear {
 						proxy.scrollTo(selectedItem?.id ?? .init())
@@ -51,6 +55,15 @@ struct MenuItemsList: View {
 	
 	private var maxHeight: CGFloat? { menuItems.count < 5 ? nil : 310 }
 	private var shouldEmbed: Bool { menuItems.count > 4 }
+	
+	private func shouldDisable(item: MenuItem) -> Bool {
+		guard showExcluded else { return false }
+		return excludedItems.contains(item) && item != selectedItem
+	}
+	
+	private func opacity(item: MenuItem) -> Double {
+		shouldDisable(item: item) ? 0.3 : 1
+	}
 }
 
 // MARK: - Previews -

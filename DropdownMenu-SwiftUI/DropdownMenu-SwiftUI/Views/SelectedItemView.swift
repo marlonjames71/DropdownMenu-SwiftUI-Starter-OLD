@@ -13,6 +13,8 @@ struct SelectedItemView: View {
 	let placeholder: String
 	let accentColor: Color
 	
+	let feedback = UIImpactFeedbackGenerator(style: .rigid)
+	
 	@Environment(\.iconTint) var iconTint: Color
 	
 	// MARK: - Init
@@ -72,6 +74,7 @@ struct SelectedItemView: View {
 		.padding(.all, 16)
 		.contentShape(Rectangle())
 		.onTapGesture {
+			feedback.impactOccurred(intensity: 0.6)
 			DropdownMenu.toggle($expanded)
 		}
 	}
