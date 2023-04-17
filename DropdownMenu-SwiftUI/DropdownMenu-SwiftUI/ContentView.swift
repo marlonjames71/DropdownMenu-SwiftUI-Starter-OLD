@@ -9,9 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
 	
+	enum DataType {
+		case noSubtext(hasIcons: Bool)
+		case hasSubtext
+	}
+	
+	@State private var dataType: DataType = .hasSubtext//(hasIcons: true)
+	
 	@State private var option1: MenuItem? = nil
 	@State private var option2: MenuItem? = nil
 	@State private var option3: MenuItem? = nil
+	
+	let notifications: [MenuItem] = [
+		.init(
+			title: "Watching",
+			subtext: "You will be notified of every new reply in this topic, and a count of new replies will be shown.",
+			iconName: "bell.badge.fill",
+			tint: .iconBlue
+		),
+		.init(
+			title: "Tracking",
+			subtext: "A count of new replies will be shown for this topic. You will be notified if someone mentions your @name or replies to you.",
+			iconName: "bell.fill",
+			tint: .iconPink
+		),
+		.init(
+			title: "Normal",
+			subtext: "You will be notified if someone mentions your @name or replies to you.",
+			iconName: "bell",
+			tint: .textSecondary
+		),
+		.init(
+			title: "Muted",
+			subtext: "You will never be notified of anything about this topic, and it will not appear in latest.",
+			iconName: "bell.slash",
+			tint: .textSecondary
+		)
+	]
 	
 	let hobbyCategories1: [MenuItem] = [
 		.init(title: "Listening to Music", iconName: "headphones"),
@@ -42,27 +76,27 @@ struct ContentView: View {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 24) {
 					DropdownMenu(
-						title: "Favorite Hobby 1",
+						title: menuTitle.0,
 						placeholder: "Choose an option below",
-						menuItems: hobbyCategories1,
+						menuItems: items,
 						selectedItem: $option1,
 						excludedItems: option2, option3//, option1
 					)
 					.iconTint(.iconBlue)
 					
 					DropdownMenu(
-						title: "Favorite Hobby 2",
+						title: menuTitle.1,
 						placeholder: "Choose an option below",
-						menuItems: hobbyCategories1,
+						menuItems: items,
 						selectedItem: $option2,
 						excludedItems: option1, option3//, option2
 					)
 					.iconTint(.iconPink)
 					
 					DropdownMenu(
-						title: "Favorite Hobby 3",
+						title: menuTitle.2,
 						placeholder: "Choose an option below",
-						menuItems: hobbyCategories1,
+						menuItems: items,
 						selectedItem: $option3,
 						excludedItems: option1, option2//, option3
 					)
@@ -73,9 +107,35 @@ struct ContentView: View {
 				.padding()
 				.frame(maxWidth: .infinity)
 			}
+			.navigationTitle("Settings")
 			.background(Color.bgPrimary.ignoresSafeArea())
-			.scrollContentBackground(.visible)
 			.scrollBounceBehavior(.basedOnSize)
+		}
+	}
+	
+	var items: [MenuItem] {
+		switch dataType {
+		case .noSubtext(hasIcons: let hasIcons):
+			return hasIcons ? hobbyCategories1 : hobbyCategories2
+		case .hasSubtext:
+			return notifications
+		}
+	}
+	
+	var menuTitle: (String, String, String) {
+		switch dataType {
+		case .noSubtext(_):
+			return (
+				"First favorite hobby",
+				"Second favorite hobby",
+				"Third favorite hobby"
+			)
+		case .hasSubtext:
+			return (
+				"Notification for Topics",
+				"Notification for Categories",
+				"Notification for Groups"
+			)
 		}
 	}
 }

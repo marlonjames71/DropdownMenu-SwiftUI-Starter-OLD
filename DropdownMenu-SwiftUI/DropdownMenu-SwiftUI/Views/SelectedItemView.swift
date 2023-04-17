@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectedItemView: View {
 	@Binding var expanded: Bool
 	@Binding var selectedItem: MenuItem?
-	let placeholder: String?
+	let placeholder: String
 	let accentColor: Color
 	
 	@Environment(\.iconTint) var iconTint: Color
@@ -20,7 +20,7 @@ struct SelectedItemView: View {
 	init(
 		expanded: Binding<Bool>,
 		selectedItem: Binding<MenuItem?>,
-		placeholder: String?,
+		placeholder: String,
 		accentColor: Color = .primary
 	) {
 		self._expanded = expanded
@@ -32,13 +32,13 @@ struct SelectedItemView: View {
 	// MARK: - Body
 	
 	var body: some View {
-		HStack(alignment: .firstTextBaseline, spacing: 8) {
+		HStack(alignment: .top, spacing: 8) {
 			if let selectedItem {
 				if let iconName = selectedItem.iconName {
 					Image(systemName: iconName)
 						.font(.body)
 						.frame(width: 30)
-						.foregroundColor(iconTint)
+						.foregroundColor(iconColor)
 						.aspectRatio(1.0, contentMode: .fit)
 						.fixedSize(horizontal: true, vertical: true)
 						.transition(.opacity)
@@ -48,14 +48,23 @@ struct SelectedItemView: View {
 					.multilineTextAlignment(.leading)
 					.lineLimit(3)
 					.fixedSize(horizontal: false, vertical: true)
-					.transition(.move(edge: .trailing).combined(with: .opacity))
+					.transition(
+						placeholder.isEmpty
+						? AnyTransition.asymmetric(
+							insertion: .move(edge: .trailing).combined(with: .opacity),
+							removal: .opacity
+						)
+						: .move(edge: .trailing).combined(with: .opacity)
+					)
 			} else {
 				placeholderText
+					.frame(minHeight: 20)
 			}
 			
 			Spacer()
 			
 			Image(systemName: "chevron.down")
+				.frame(height: 20)
 				.rotationEffect(.degrees(expanded ? -180 : 0))
 				.font(.footnote)
 				.foregroundColor(.primary)
@@ -70,11 +79,21 @@ struct SelectedItemView: View {
 	// MARK: - Views
 	
 	private var placeholderText: some View {
-		Text(placeholder ?? "")
+		Text(placeholder)
 			.foregroundColor(.secondary)
 			.multilineTextAlignment(.leading)
 			.fixedSize(horizontal: false, vertical: true)
 			.transition(.move(edge: .leading).combined(with: .opacity))
+	}
+	
+	// MARK: - Helpers
+	
+	private var iconColor: Color {
+		if iconTint == Color.accentColor {
+			return selectedItem?.tint ?? iconTint
+		} else {
+			return iconTint
+		}
 	}
 }
 

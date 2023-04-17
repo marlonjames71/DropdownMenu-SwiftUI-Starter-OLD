@@ -94,7 +94,7 @@ struct DropdownMenu: View {
 				SelectedItemView(
 					expanded: $expanded,
 					selectedItem: $selectedItem,
-					placeholder: placeholder
+					placeholder: placeholder ?? ""
 				)
 				
 				if expanded {
